@@ -25,24 +25,18 @@ import org.openqa.selenium.support.PageFactory;
 
 public class FindAllLinks {
 	static String in_browser = "Edge"; // "HtmlUnit" "Firefox" "Chrome"  "Safari"  "IE"  "Edge"
-	//static String url = "http://toolsqa.com/";
-	//static String url = "http://alex.academy/exercises/signup/v1/";
 	static String url = "http://ebay.com/";
 	
-	public static void main(String[] args) throws IOException, InterruptedException {
-		Browsers.setWebDriver(in_browser);
-		WebDriver driver = Browsers.driver;     
-		driver.get(url);     
-		List<WebElement> links = driver.findElements(By.tagName("a")); 
-		Thread.sleep(1000);
-		System.out.println(links.size());     
-		for (int i = 0; i<links.size(); i=i+1){System.out.println(links.get(i).getText());}
-		
-		if (Browsers.driver != null) {Browsers.driver.quit();}
-		} // main  END
-
-
-
-
-
-}// FindAllLinks END
+public static void main(String[] args) throws IOException, InterruptedException {
+	Browsers.setWebDriver(in_browser);
+	WebDriver driver = Browsers.driver;     
+	driver.get(url);
+	
+	List<WebElement> links = driver.findElements(By.tagName("a")); // find all links
+	
+	Thread.sleep(1000);
+	System.out.println(links.size());     
+	for (int i = 0; i<links.size(); i=i+1){System.out.println(links.get(i).getText());}
+	
+	if (Browsers.driver != null) {Browsers.driver.quit();}
+	}}// FindAllLinks END
