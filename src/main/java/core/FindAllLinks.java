@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -25,7 +26,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class FindAllLinks {
 	static String in_browser = "Edge"; // "HtmlUnit" "Firefox" "Chrome"  "Safari"  "IE"  "Edge"
-	static String url = "http://ebay.com/";
+	//static String url = "http://ebay.com/";
+	static String url = "http://swisnl.github.io/jQuery-contextMenu/demo.html";
 	
 public static void main(String[] args) throws IOException, InterruptedException {
 	Browsers.setWebDriver(in_browser);
@@ -45,7 +47,12 @@ public static void main(String[] args) throws IOException, InterruptedException 
 	System.out.println("dropdown: \t"+dropdown.size());  //Find total number of Menus on a Webpage 
 	
 	java.util.List<WebElement> textboxes = driver.findElements(By.xpath("//input[@type='text']")); 
-	System.out.println("textboxes: "+textboxes.size()); //Find total number of TextBoxes on a Webpage
+	System.out.println("textboxes: \t"+textboxes.size()); //Find total number of TextBoxes on a Webpage
 	
+	JavascriptExecutor jse = (JavascriptExecutor)driver; 
+	jse.executeScript("window.scrollBy(0,250)", "");
+	Thread.sleep(1000);
+	jse.executeScript("window.scrollBy(0,250)", "");
+	Thread.sleep(1000);
 	if (Browsers.driver != null) {Browsers.driver.quit();}
 	}}// FindAllLinks END
