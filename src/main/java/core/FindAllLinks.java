@@ -33,10 +33,19 @@ public static void main(String[] args) throws IOException, InterruptedException 
 	driver.get(url);
 	
 	List<WebElement> links = driver.findElements(By.tagName("a")); // find all links
-	
-	Thread.sleep(1000);
+	System.out.println("links: \t\t"+links.size()); 
+/*	Thread.sleep(1000);
 	System.out.println(links.size());     
-	for (int i = 0; i<links.size(); i=i+1){System.out.println(links.get(i).getText());}
+	for (int i = 0; i<links.size(); i=i+1){System.out.println(links.get(i).getText());}*/
+	
+	List<WebElement> checkboxes = driver.findElements(By.xpath("//input[@type='checkbox']")); 
+	System.out.println("checkboxes: \t"+checkboxes.size()); //Find total number of Checkboxes on a Webpage 
+
+	List<WebElement> dropdown = driver.findElements(By.tagName("select"));   
+	System.out.println("dropdown: \t"+dropdown.size());  //Find total number of Menus on a Webpage 
+	
+	java.util.List<WebElement> textboxes = driver.findElements(By.xpath("//input[@type='text']")); 
+	System.out.println("textboxes: "+textboxes.size()); //Find total number of TextBoxes on a Webpage
 	
 	if (Browsers.driver != null) {Browsers.driver.quit();}
 	}}// FindAllLinks END
